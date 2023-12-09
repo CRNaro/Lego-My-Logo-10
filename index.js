@@ -5,10 +5,9 @@ const { logoPrompts } = require ("./lib/prompts.js");
 const { Triangle, Circle, Square } = require('./lib/shapes.js');
 
 (async() => {
-    //const {default: inquirer} = await import('inquirer');
-    //const {logoPrompts} = await import('./lib/prompts.js');    //, textColorPrompts, shapePrompts, shapeColorPrompts
+    
    
-    inquirer.prompt(logoPrompts)     //, textColorPrompts, shapePrompts, shapeColorPrompts
+    inquirer.prompt(logoPrompts)     
     .then(answers => {
        let shape = '';
         switch(answers.shape) {
@@ -19,12 +18,12 @@ const { Triangle, Circle, Square } = require('./lib/shapes.js');
                 shape = `<polygon points = "150,0 300,200 0,200" fill = "${answers.shapeColor}" />`;
                 break;
             case 'Square':
-                shape = `<rect x="25" y="25" width="200" height="300" fill = "${answers.shapeColor}" />`;
+                shape = `<rect x="50" y="25" width="200" height="300" fill = "${answers.shapeColor}" />`;
         }
 
         const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
             ${shape}
-            <text x="145" y="110" text-anchor="middle" fill="${answers.textColor}" font-size="30">${answers.text}</text>
+            <text x="145" y="110" text-anchor="middle" fill="${answers.textColor}" font-size="30" font-family="${answers.font}">${answers.text}</text>
             </svg>`;
 
         fs.writeFile('./examples/logo.svg', svg, (err) => {
@@ -40,6 +39,3 @@ const { Triangle, Circle, Square } = require('./lib/shapes.js');
         }
     });
 })();
-//module.exports = {
-    //logoPrompts
-//}
