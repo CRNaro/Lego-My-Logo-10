@@ -13,18 +13,18 @@ const { Triangle, Circle, Square } = require('./lib/shapes.js');
        let shape = '';
         switch(answers.shape) {
             case 'Circle':
-                shape = `<circle cx="50" cy="50" r="40" fill = "${answers.shapeColor}" />`;
+                shape = `<circle cx="150" cy="100" r="100" fill = "${answers.shapeColor}" />`;
                 break;
             case 'Triangle':
-                shape = `<polygon points = "50,15 100,100 0,100" fill = "${answers.shapeColor}" />`;
+                shape = `<polygon points = "150,0 300,200 0,200" fill = "${answers.shapeColor}" />`;
                 break;
             case 'Square':
-                shape = `<rect x="100" y="100" width="70" height="70" fill = "${answers.shapeColor}" />`;
+                shape = `<rect x="25" y="25" width="200" height="300" fill = "${answers.shapeColor}" />`;
         }
 
         const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
             ${shape}
-            <text x="50" y="55" text-anchor="middle" fill="${answers.textColor}">${answers.text}</text>
+            <text x="145" y="110" text-anchor="middle" fill="${answers.textColor}" font-size="30">${answers.text}</text>
             </svg>`;
 
         fs.writeFile('./examples/logo.svg', svg, (err) => {
